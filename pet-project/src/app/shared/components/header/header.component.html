@@ -1,11 +1,14 @@
 <div class="header">
-    <div class="header__user">
-        <app-user-detail></app-user-detail>
-    </div>
-    <div class="header__logout">
-        <app-logout-icon></app-logout-icon>
-    </div>
+  <div class="header__user">
+    <app-user-detail></app-user-detail>
+  </div>
+  <div class="header__logout">
+    <app-logout-icon></app-logout-icon>
+  </div>
 </div>
 <div class="header-nav">
-    <app-navigation-menu></app-navigation-menu>
+  <app-navigation-menu></app-navigation-menu>
+</div>
+<div class="header-message" *ngIf="message()">
+  <span class="header-message__text">{{ message() }}</span>
 </div>

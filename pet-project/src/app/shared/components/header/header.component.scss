@@ -22,3 +22,13 @@
     height: 0;
   }
 }
+.header-message {
+  height: 30px;
+  padding: 10px 30px;
+  background-color: rgb(21, 135, 21);
+  display: flex;
+  align-items: center;
+  &__text {
+    color: #ffffff;
+  }
+}
