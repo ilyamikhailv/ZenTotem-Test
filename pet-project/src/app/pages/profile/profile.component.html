@@ -5,18 +5,27 @@
       <label class="form-label">Email</label>
       <div class="form-field">
         <input class="input-text" readonly formControlName="email" />
+        <app-validation-error
+          [control]="profileForm.controls.email"
+        ></app-validation-error>
       </div>
     </div>
     <div class="form-line">
       <label class="form-label">First Name</label>
       <div class="form-field">
         <input class="input-text" formControlName="firstName" />
+        <app-validation-error
+          [control]="profileForm.controls.firstName"
+        ></app-validation-error>
       </div>
     </div>
     <div class="form-line">
       <label class="form-label">Last Name</label>
       <div class="form-field">
-        <input class="input-text" formControlName="firstName" />
+        <input class="input-text" formControlName="lastName" />
+        <app-validation-error
+          [control]="profileForm.controls.lastName"
+        ></app-validation-error>
       </div>
     </div>
     <div class="form-line">
@@ -28,19 +37,25 @@
           prefix="+7"
           mask="(000) 000 00 00"
         />
+        <app-validation-error
+          [control]="profileForm.controls.phoneNumber"
+        ></app-validation-error>
       </div>
     </div>
     <div class="form-line">
       <label class="form-label">Website URL</label>
       <div class="form-field">
         <input class="input-text" formControlName="websiteUrl" />
+        <app-validation-error
+          [control]="profileForm.controls.websiteUrl"
+        ></app-validation-error>
       </div>
     </div>
 
     <div class="form-button-wrapper">
       <button
         [disabled]="loading()"
-        app-id="submit"
+        (click.prevent)="save()"
         class="form-button"
         [ngClass]="{ 'form-button--loading': loading() }"
       >

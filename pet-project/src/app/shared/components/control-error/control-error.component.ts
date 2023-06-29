@@ -5,8 +5,8 @@ import {
   OnChanges,
 } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { combineLatest, Observable, of } from 'rxjs';
-import { debounceTime, switchMap } from 'rxjs/operators';
+import { combineLatest, Observable, map } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormValidationService } from 'src/app/core/services/form-validation.service';
 import { CommonModule } from '@angular/common';
@@ -25,7 +25,7 @@ export class ControlErrorComponent implements OnChanges {
 
   errorText$: Observable<string>;
 
-  @Input()
+  @Input({ required: true })
   control: AbstractControl;
 
   private setErrorText(): void {
@@ -35,13 +35,14 @@ export class ControlErrorComponent implements OnChanges {
     ]).pipe(
       untilDestroyed(this),
       debounceTime(50),
-      switchMap(([, status]) => {
+      map(([, status]) => {
         if (status === 'INVALID' && this.control.touched) {
-          const error = this.validationService.getFirstControlError(this.control);
-          console.log(error);
-          return of(error.message);
+          const error = this.validationService.getFirstControlError(
+            this.control
+          );
+          return error.message;
         }
-        return of(null);
+        return null;
       })
     );
   }

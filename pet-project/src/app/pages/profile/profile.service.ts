@@ -47,7 +47,7 @@ export class ProfileService {
         validators: [AppValidators.required, AppValidators.maxLength(255)],
       }),
       phoneNumber: new FormControl<string>(profile?.phoneNumber, {
-        validators: [AppValidators.required, AppValidators.maxLength(10)],
+        validators: [AppValidators.required, AppValidators.maxLength(12)],
       }),
       websiteUrl: new FormControl<string>(profile?.websiteUrl, {
         validators: [

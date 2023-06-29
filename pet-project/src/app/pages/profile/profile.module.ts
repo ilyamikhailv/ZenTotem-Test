@@ -11,7 +11,11 @@ import {
   NgxMaskPipe,
   provideEnvironmentNgxMask,
 } from 'ngx-mask';
-
+import { ValidationErrorComponent } from 'src/app/shared/components/validation-error/validation-error.component';
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+  
+};
 const routes: Routes = [
   {
     path: '',
@@ -31,7 +35,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     NgxMaskDirective,
     NgxMaskPipe,
+    ValidationErrorComponent,
   ],
-  providers: [provideEnvironmentNgxMask()],
+  providers: [provideEnvironmentNgxMask(maskConfig)],
 })
 export class ProfileModule {}

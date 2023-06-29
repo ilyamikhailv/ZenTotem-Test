@@ -1,9 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileForm } from './profile.form';
 import { ProfileService } from './profile.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { FormValidationService } from 'src/app/core/services/form-validation.service';
 @UntilDestroy()
 @Component({
   selector: 'app-profile',
@@ -14,10 +20,18 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 export class ProfileComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private formValidationService: FormValidationService
   ) {}
   readonly loading = signal<boolean>(false);
   profileForm: FormGroup<ProfileForm> = null;
+
+  save(): void {
+    if (this.profileForm.invalid) {
+      this.formValidationService.processInvalidFormGroup(this.profileForm);
+    }
+  }
+
   ngOnInit(): void {
     this.activatedRoute.data
       .pipe(untilDestroyed(this))
