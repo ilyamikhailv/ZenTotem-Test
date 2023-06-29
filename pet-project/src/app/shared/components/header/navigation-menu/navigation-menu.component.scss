@@ -1,0 +1,20 @@
+.nav {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #989ae2;
+  &__item {
+    display: flex;
+    outline: 0 none;
+    text-decoration: none;
+    height: inherit;
+    padding: 0 30px;
+    border-right: 1px solid #999;
+    align-items: center;
+    color: #fff;
+    &--active {
+      color: red;
+    }
+  }
+}
