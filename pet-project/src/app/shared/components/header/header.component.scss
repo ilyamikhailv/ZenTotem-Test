@@ -2,6 +2,10 @@
   height: 30px;
   background-color: #8676b6;
   padding: 10px 30px;
+  &__profile {
+    float: right;
+    margin-right: 20px;
+  }
   &__user {
     float: left;
     height: inherit;

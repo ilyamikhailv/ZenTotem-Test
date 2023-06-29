@@ -12,6 +12,7 @@ import { LogoutIconComponent } from './logout-icon/logout-icon.component';
 import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
 import { HeaderMessageService } from 'src/app/core/services/header-message.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ProfileIconComponent } from './profile-icon/profile-icon.component';
 
 @UntilDestroy()
 @Component({
@@ -22,6 +23,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
     UserDetailComponent,
     LogoutIconComponent,
     NavigationMenuComponent,
+    ProfileIconComponent
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],

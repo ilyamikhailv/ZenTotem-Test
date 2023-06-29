@@ -49,7 +49,6 @@ export class ValidationErrorComponent {
       case 'pattern':
         return `Введите корректное значение`;
       case 'minlength':
-        console.log(this.control.value);
         return `Минимальная длина поля ${
           this.control.errors[this.validatorName].requiredLength
         } символов`;
