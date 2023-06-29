@@ -11,6 +11,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, delay, throwError } from 'rxjs';
 import { RoleEnum } from '../enums/role.enum';
 import { UserModel } from '../models/user.model';
+import { ProfileModel } from '../models/profile.model';
 
 @Injectable()
 export class FakeBackendHttpInterceptor implements HttpInterceptor {
@@ -23,7 +24,6 @@ export class FakeBackendHttpInterceptor implements HttpInterceptor {
   handleRequests(req: HttpRequest<any>, next: HttpHandler): any {
     const { url, method, body } = req;
     if (url.endsWith('/login') && method === 'POST') {
-      console.log(body.login === '1' && body.password === '1');
       if (body.login === '1' && body.password === '1') {
         return this.getErrorResponse('Неверный логин или пароль');
       }
@@ -34,6 +34,16 @@ export class FakeBackendHttpInterceptor implements HttpInterceptor {
         lastName: 'Иванов',
         middleName: 'Иванович',
       } as UserModel);
+    }
+    if (url.endsWith('/profile') && method === 'GET') {
+      return this.getSuccessResponse({
+        id: 1,
+        email: 'mail@mail.ru',
+        firstName: 'Иван',
+        lastName: 'Иванов',
+        phoneNumber: '+79875656655',
+        websiteUrl: 'https://google.com',
+      } as ProfileModel);
     }
     return next.handle(req);
   }

@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile.component';
 import { RouterModule, Routes } from '@angular/router';
 import { userLoggedInGuard } from 'src/app/core/guards/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { profileResolver } from './profile.resolver';
 
 const routes: Routes = [
   {
@@ -11,18 +12,17 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [userLoggedInGuard],
     title: 'Профиль пользователя',
+    resolve: { profile: profileResolver },
   },
 ];
 
 @NgModule({
-  declarations: [
-    ProfileComponent
-  ],
+  declarations: [ProfileComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
-export class ProfileModule { }
+export class ProfileModule {}

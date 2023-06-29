@@ -1,1 +1,46 @@
-<p>profile works!</p>
+<div class="profile" [formGroup]="profileForm">
+  <div class="profile__title">Редактирование профиля</div>
+  <div class="profile__content">
+    <div class="form-line">
+      <label class="form-label">Email</label>
+      <div class="form-field">
+        <input class="input-text" readonly formControlName="email" />
+      </div>
+    </div>
+    <div class="form-line">
+      <label class="form-label">First Name</label>
+      <div class="form-field">
+        <input class="input-text" formControlName="firstName" />
+      </div>
+    </div>
+    <div class="form-line">
+      <label class="form-label">Last Name</label>
+      <div class="form-field">
+        <input class="input-text" formControlName="firstName" />
+      </div>
+    </div>
+    <div class="form-line">
+      <label class="form-label">Phone Number</label>
+      <div class="form-field">
+        <input class="input-text" formControlName="phoneNumber" />
+      </div>
+    </div>
+    <div class="form-line">
+      <label class="form-label">Website URL</label>
+      <div class="form-field">
+        <input class="input-text" formControlName="websiteUrl" />
+      </div>
+    </div>
+
+    <div class="form-button-wrapper">
+      <button
+        [disabled]="loading()"
+        app-id="submit"
+        class="form-button"
+        [ngClass]="{ 'form-button--loading': loading() }"
+      >
+        Сохранить
+      </button>
+    </div>
+  </div>
+</div>
