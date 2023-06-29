@@ -48,6 +48,11 @@ export class ValidationErrorComponent {
         return `Заполните обязательное поле`;
       case 'pattern':
         return `Введите корректное значение`;
+      case 'minlength':
+        console.log(this.control.value);
+        return `Минимальная длина поля ${
+          this.control.errors[this.validatorName].requiredLength
+        } символов`;
       default:
         return null;
     }
