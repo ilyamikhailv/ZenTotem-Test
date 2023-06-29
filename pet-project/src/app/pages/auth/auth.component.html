@@ -1,1 +1,44 @@
-<p>auth works!</p>
+<div class="auth-form">
+  <div class="auth-form__title">
+    <span class="auth-page-title">Авторизация</span>
+  </div>
+  <div class="auth-form__content" [formGroup]="authForm">
+    <div class="form-line">
+      <label class="form-label">Логин</label>
+      <div class="form-field">
+        <input
+          app-id="login"
+          class="input-text"
+          [formControl]="getControl('login')"
+        />
+        <app-control-error [control]="getControl('login')"></app-control-error>
+      </div>
+    </div>
+    <div class="form-line">
+      <label class="form-label">Пароль</label>
+      <div class="form-field">
+        <input
+          class="input-text"
+          app-id="password"
+          type="password"
+          [formControl]="getControl('password')"
+        />
+        <app-control-error
+          [control]="getControl('password')"
+        ></app-control-error>
+      </div>
+    </div>
+
+    <div class="form-button-wrapper">
+      <button
+        (click.prevent)="submit()"
+        [disabled]="loading()"
+        app-id="submit"
+        class="form-button"
+        [ngClass]="{ 'form-button--loading': loading() }"
+      >
+        Войти
+      </button>
+    </div>
+  </div>
+</div>

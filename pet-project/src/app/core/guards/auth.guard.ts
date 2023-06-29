@@ -3,6 +3,7 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   CanActivateFn,
+  Router,
 } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -10,5 +11,9 @@ export const userLoggedInGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ) => {
-  return inject(AuthService).loggedIn;
+  const loggedIn = inject(AuthService).loggedIn;
+  if (!loggedIn) {
+    inject(Router).navigateByUrl('/login');
+  }
+  return loggedIn;
 };

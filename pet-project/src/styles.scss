@@ -1,1 +1,209 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1;
+  font-size: 14px;
+  background: #fff;
+  color: #435261;
+}
+
+a {
+  color: #2d6fb1;
+  font-family: inherit;
+}
+.input-text {
+  width: 100%;
+  border: 0 none;
+  outline: none;
+  border: 1px solid #949494;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  height: 30px;
+  color: inherit;
+  background-color: #ffffff;
+  border-radius: 3px;
+  padding: 0 10px;
+
+  &::placeholder {
+    color: #949494;
+    font-family: inherit;
+    font-size: 18px;
+  }
+
+  &:focus::placeholder {
+    display: none;
+    opacity: 0;
+  }
+
+  &[disabled],
+  &[readonly] {
+    opacity: 0.5;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &.ng-invalid.ng-touched,
+  &.ng-invalid.ng-dirty {
+    border: 1px solid #e30613;
+    transition: border-color 0.35s linear;
+  }
+}
+.form-label {
+  display: block;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  color: inherit;
+  margin-bottom: 10px;
+}
+.form-line {
+  padding-bottom: 20px;
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  &--flex {
+    display: flex;
+    flex-direction: row;
+  }
+}
+.form-field {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+.field-validation-error {
+  position: absolute;
+  height: 21px;
+  white-space: nowrap;
+  left: 5px;
+  top: 50%;
+  left: calc(100% + 5px);
+  padding: 3px 6px;
+  background-color: #e30613;
+  border-radius: 3px;
+  display: block;
+  box-sizing: border-box;
+  animation-name: fieldValidationError;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-duration: 0.35s;
+  z-index: 3;
+
+  &__text {
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+  }
+
+  &:empty {
+    display: none;
+  }
+  &::before{
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: #e30613;
+    position: absolute;
+    transform: rotate(45deg) translateY(-50%);
+    left: -3px;
+    top: 50%;
+  }
+}
+.form-button {
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 20px;
+  white-space: nowrap;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: inherit;
+  cursor: pointer;
+  height: 30px;
+  text-decoration: none;
+  outline: 0 none;
+
+  &[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  &--loading {
+    color: transparent;
+    position: relative;
+    box-shadow: none;
+    background-image: none;
+
+    &::after {
+      display: block;
+      content: "";
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin: -10px 0 0 -10px;
+      transform-origin: center;
+      animation-name: loader;
+      animation-timing-function: linear;
+      animation-duration: 0.75s;
+      animation-iteration-count: infinite;
+      background-color: transparent;
+      background-position: center;
+      background-size: 20px 20px;
+      background-repeat: no-repeat;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAABbklEQVQ4T52UOywFQRSGXY8E8dagEIWERiFClCrRKIiCimgpFAqNRqWR6IgGjZ6CjlApCAlKj1AJCVF4xPP7b86RseS6dyf5smdm53w7OztnE1l/t0aG26AFaqEAXuEI1mA3mpaIDNTQ74Z2Sy60q0Qhp/SH4dLzQ1E1gyNQAZ+wBftwY5Mb7AHjgVQP3dF9F5URj0I5XMECPEaXH/QXiXvhBTrh0EVDdOrhGFbhKYXEb60Q9MEJNEukje2HN5hJUyJZKezZAnok6gJtrt51M42VhFMm6UzBkkRjoD1ahvMMRcq7g3uJJiAfZjUQU5T8ai6aJn7OUKTpB3Dhr6aNm4frGKJkim92K/E66ADGahLVwYDtz1wsi61IuYNQBGewEUfmJ7uEZB1KnWgV4nYKmeeoHr9bWLRVjHaY7IGrKvwWVHPZRg7Xd1AV/GjR34gOWBPkmlASrVJ4rEL9+E/k9ysJiiEP9ENzkWRa0a/2BfVMSp+jyCLIAAAAAElFTkSuQmCC);
+    }
+  }
+}
+
+@keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fieldValidationError {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+.text-center {
+  text-align: center;
+}
+.form-button-wrapper {
+  padding: 10px 0;
+  text-align: center;
+}
