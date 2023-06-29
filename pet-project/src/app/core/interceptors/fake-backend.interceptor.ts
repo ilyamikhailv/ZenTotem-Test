@@ -41,7 +41,7 @@ export class FakeBackendHttpInterceptor implements HttpInterceptor {
         email: 'mail@mail.ru',
         firstName: 'Иван',
         lastName: 'Иванов',
-        phoneNumber: '+79875656655',
+        phoneNumber: '+79876667788',
         websiteUrl: 'https://google.com',
       } as ProfileModel);
     }
