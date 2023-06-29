@@ -50,7 +50,11 @@ export class ProfileService {
         validators: [AppValidators.required, AppValidators.maxLength(10)],
       }),
       websiteUrl: new FormControl<string>(profile?.websiteUrl, {
-        validators: [],
+        validators: [
+          AppValidators.pattern(
+            '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?'
+          ),
+        ],
       }),
     });
   }
