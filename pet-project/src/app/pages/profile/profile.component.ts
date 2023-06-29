@@ -29,6 +29,11 @@ export class ProfileComponent implements OnInit {
   save(): void {
     if (this.profileForm.invalid) {
       this.formValidationService.processInvalidFormGroup(this.profileForm);
+    } else {
+      this.profileService
+        .save(this.profileForm.getRawValue())
+        .pipe(untilDestroyed(this))
+        .subscribe();
     }
   }
 

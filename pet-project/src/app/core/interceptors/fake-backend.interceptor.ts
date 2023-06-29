@@ -45,6 +45,14 @@ export class FakeBackendHttpInterceptor implements HttpInterceptor {
         websiteUrl: 'https://google.com',
       } as ProfileModel);
     }
+    if (url.endsWith('/save') && method === 'POST') {
+      if (body.firstName?.length < 2) {
+        return this.getErrorResponse(
+          'Слишком мало символов в поле "First Name"'
+        );
+      }
+      return this.getSuccessResponse(body as ProfileModel);
+    }
     return next.handle(req);
   }
 

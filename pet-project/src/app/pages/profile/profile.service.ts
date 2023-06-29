@@ -37,6 +37,9 @@ export class ProfileService {
 
   getFormGroup(profile: ProfileModel): FormGroup<ProfileForm> {
     return this.fb.group({
+      id: new FormControl<number>(profile?.id ?? 0, {
+        validators: [],
+      }),
       email: new FormControl<string>(profile?.email, {
         validators: [AppValidators.required, AppValidators.email],
       }),
